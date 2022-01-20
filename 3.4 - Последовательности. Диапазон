@@ -34,9 +34,12 @@ print(max(my_list))  # 8
 • Получение суммы элементов: sum(s)
 my_list = (1, 4, 6, 8, 5, 2)
 print(sum(my_list))  # 26
-• Сортировка элементов: sorted(s [, key=None] [, reverse=False])
+• Сортировка элементов: sorted(s [, key=None] [, reverse=False]) - НЕ ПУТАТЬ С МЕТОДОМ sort, который меняет сам объект
 my_list = (1, 4, 6, 8, 5, 2)
 print(sorted(my_list, reverse=True))  # [8, 6, 5, 4, 2, 1]
-
-
-
+• Метод получение количества вхождений элемента в объект count(x)
+tup1 = (1, 2, 4, 5)
+print(tup1.count(2))
+• Метод получения индекса первого вхождения элемента index(x)
+tup1 = (1, 2, 4, 5)
+print(tup1.index(5))  # 3
