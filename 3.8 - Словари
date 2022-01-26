@@ -22,6 +22,8 @@ print(a == b == c == d)  # True
 • Изменить значение для ключа
 my_dict[2] = False 
 print(my_dict[2])  # False
+• Изменить ключ в словаре:
+d['новый ключ'] = d.pop('старый ключ')
 • Удаляет ключ и соответствующее ему значение или генерирует ошибку КеуЕrrоr.
 del my_dict[2]
 print(my_dict)  # {'number': 23, 'my_list': [1, 2, 3]}
@@ -43,3 +45,67 @@ print(d1)  # {2: [1, 2, 3], 3: 'sdfsdf', 4: 'sdfsdf', 5: 1.2}
 Объекты просмотра (view objects) - это объекты (новые представления), возвращаемые методами d.keys(), d.values() и d.items(), и представляющие собой динамический 
 просмотр записей словаря.
 !  Если словарь изменяется, его представление также изменяется !
+s = {1: 'pizza', 2: 'coffee', 3: 'water', 4: 'soda'}
+keys = s.keys()
+values = s.values()
+print(list(keys))
+print(list(values))
+del s[1]
+print(s)  # {2: 'coffee', 3: 'water', 4: 'soda'}
+--------------
+s = {1: 'pizza', 2: 'coffee', 3: 'water', 4: 'soda'}
+keys = s.keys()
+values = s.values()
+print(keys & {1, 6, 7})  # {1}
+print(keys ^ {1, 5})  # {2, 3, 4, 5}
+========
+ЗАДАЧИ:
+========
+1) Дан словарь {1: 10, 2: 20}. Добавить в словарь ключ 3 со значением 30
+d = {0: 10, 1: 20}
+d[2] = 30
+print(d)  # {1: 10, 2: 20, 3: 30}
+
+2) Дано три словаря: {1: 10, 2: 20}, {3: 30, 4: 40} и {5: 50, 6: 60}. Объединить данные словари в один.
+d1 = {1: 10, 2: 20}
+d2 = {3: 30, 4: 40}
+d3 = {5: 50, 6: 60}
+
+d1.update(d2)
+d1.update(d3)
+print(d1)  # {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+
+3) Дан словарь {'data1': 100, 'data2': -54, 'data3': 247}. Найти сумму значений словаря
+d = {'data1': 100, 'data2': -54, 'data3': 247}
+
+values = d.values()
+sum_values = sum(values)
+print(sum_values)  # 293
+
+4) Дан словарь {'a': 232, 'b': 234, 'c': 434, 'd': 758, 'e': 8767, 'f': 65}. Найти 3 наибольших значения в нем.
+
+values = d.values()
+sorted_values = sorted(values, reverse=True)
+print(sorted_values)
+print('3 самых больших значения:', sorted_values[0:3])  # [8767, 758, 434]
+
+5) Дан словарь {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}. Создать новый словарь, который будет содержать только имя и зарплату сотрудника,
+а затем удалить эти значения из исходного словаря.
+d = {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}
+new_d = {'name': d.pop('name'), 'salary': d.pop('salary')}
+print(d)  # {'age': 25, 'city': 'New York'}
+print(new_d)  # {'name': 'Kelly', 'salary': 8000}
+
+6) Дан словарь {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}. Переименовать ключ ‘city’ в ‘location’.
+
+d = {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}
+d['location'] = d.pop('city')
+
+7) Дан словарь {'emp1': {'name': 'Jhon', 'salary': 7500}, 'emp2': {'name': 'Emma', 'salary': 8000}, 'emp3': {'name': 'Brad', 'salary': 6500}}.
+Измените значение зарплаты Брэда с 6500 до 8500.
+d = {'emp1': {'name': 'Jhon', 'salary': 7500},
+     'emp2': {'name': 'Emma', 'salary': 8000},
+     'emp3': {'name': 'Brad', 'salary': 6500}}
+
+d['emp3']['salary'] = 8500  # Обращаемся к emp3 и конкретно к ключу salary
+print(d)
